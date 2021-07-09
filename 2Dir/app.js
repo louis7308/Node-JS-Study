@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
 
+app.set('views', './views');
+app.set('view engine', 'ejs')
+
 app.get('/', (req, res) => {
-    res.send('여기는 루트 경로입니다.');
+    res.render('index');
 });
 
 app.get('/login', (req, res) => {
-    res.send('여기는 로그인 경로입니다.');
+    res.render('login')
 });
 
 app.listen(3000, () => {
