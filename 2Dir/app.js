@@ -1,17 +1,15 @@
+// 모듈
 const express = require('express');
 const app = express();
 
-app.set('views', './views');
+
+// 라우팅 분리
+const home = require('./routers/index')
+
+
+app.set('views', '../views');
 app.set('view engine', 'ejs')
 
-app.get('/', (req, res) => {
-    res.render('index');
-});
+app.use('/', home); // use -> 미들웨어를 등록해주는 메소드
 
-app.get('/login', (req, res) => {
-    res.render('login')
-});
-
-app.listen(3000, () => {
-    console.log('Server open');
-});
+module.exports = app;
